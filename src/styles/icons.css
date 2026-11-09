@@ -1,0 +1,37 @@
+/* Boxicons v2.1.4. Font: SIL OFL 1.1. See THIRD_PARTY_NOTICES.md. */
+@font-face{font-family:boxicons;font-weight:400;font-style:normal;font-display:block;src:url("../../node_modules/boxicons/fonts/boxicons.woff2") format("woff2")}
+.bx{font-family:boxicons!important;font-weight:400;font-style:normal;font-variant:normal;line-height:1;text-transform:none;speak:never;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.bx-right-top-arrow-circle:before{content:"\ebea"}
+.bx-right-arrow-alt:before{content:"\ebe6"}
+.bx-menu:before{content:"\eb5f"}
+.bx-x:before{content:"\ec8d"}
+.bx-compass:before{content:"\ea7f"}
+.bx-code-alt:before{content:"\ea69"}
+.bx-down-arrow-alt:before{content:"\eab7"}
+.bx-devices:before{content:"\ea98"}
+.bx-chip:before{content:"\ea5a"}
+.bx-trending-up:before{content:"\ec53"}
+.bx-cloud:before{content:"\ea60"}
+.bx-layer:before{content:"\eb2e"}
+.bx-plus:before{content:"\ebc0"}
+.bx-minus:before{content:"\eb8b"}
+.bx-palette:before{content:"\eba9"}
+.bx-hotel:before{content:"\eb18"}
+.bx-buildings:before{content:"\ea0c"}
+.bx-shopping-bag:before{content:"\ec0b"}
+.bx-briefcase-alt-2:before{content:"\ea02"}
+.bx-rocket:before{content:"\ebeb"}
+.bx-dots-horizontal-rounded:before{content:"\eab2"}
+.bx-check-circle:before{content:"\ea46"}
+.bx-check:before{content:"\ea41"}
+.bx-phone-call:before{content:"\ebb3"}
+.bx-user-voice:before{content:"\ec69"}
+.bx-reset:before{content:"\ebe0"}
+.bx-user-check:before{content:"\ec64"}
+.bx-transfer:before{content:"\ec4e"}
+.bx-user:before{content:"\ec63"}
+.bx-bulb:before{content:"\ea0d"}
+.bx-info-circle:before{content:"\eb21"}
+.bx-envelope:before{content:"\eac1"}
+.bx-phone:before{content:"\ebb2"}
+.bx-download:before{content:"\eab9"}

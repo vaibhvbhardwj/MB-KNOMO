@@ -1,0 +1,5 @@
+import sharp from 'sharp';
+for (const width of [800, 1600, 2200]) await sharp('public/images/coast-original.jpg').resize({ width }).webp({ quality: 83 }).toFile(`public/images/coast-${width}.webp`);
+const text = `<svg width="1200" height="630"><rect width="1200" height="630" fill="#102b3f" fill-opacity=".84"/><text x="75" y="95" font-family="sans-serif" font-size="18" letter-spacing="4" fill="#c2dfd6">MAVEN BRIDGE × KNOMO DEVELOPERS</text><text x="70" y="255" font-family="sans-serif" font-weight="600" font-size="72" fill="white">Business ideas deserve</text><text x="70" y="350" font-family="serif" font-style="italic" font-size="88" fill="#f3a58b">exceptional execution.</text><text x="75" y="520" font-family="sans-serif" font-size="21" fill="#c2dfd6">BUSINESS STRATEGY × TECHNOLOGY × GROWTH</text></svg>`;
+await sharp('public/images/coast-original.jpg').resize(1200, 630, { fit: 'cover' }).composite([{ input: Buffer.from(text) }]).jpeg({ quality: 85 }).toFile('public/images/social.jpg');
+console.log('Optimized coastal images and sharing image created.');
