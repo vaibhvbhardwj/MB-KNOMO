@@ -9,9 +9,11 @@ for (const file of routes) {
   const title = html.match(/<title>(.*?)<\/title>/)?.[1]; assert.ok(title); assert.ok(!titles.has(title), 'Route titles must be unique'); titles.add(title);
   assert.match(html, /<main id="main"/); assert.match(html, /name="description"/);
   for (const match of html.matchAll(/(?:src|href)="(\/(?:assets|images|fonts|decor|licenses)\/[^"?#]+)"/g)) { assert.ok(existsSync(`dist${match[1]}`), `Missing asset in ${file}: ${match[1]}`); checked++; }
-  assert.ok(!/SMTP_APP_PASSWORD|GOOGLE_PRIVATE_KEY|test-only-injected-transport/.test(html));
+  assert.ok(!/EMAILJS_PRIVATE_KEY|GOOGLE_PRIVATE_KEY|test-only-injected-transport/.test(html));
 }
 const home = await readFile('dist/index.html','utf8');
 for (const id of ['services','solutions','products']) assert.ok(home.includes(`id="${id}"`));
-const manifest = JSON.parse(await readFile('.openai/hosting.json','utf8')); assert.equal(manifest.static.directory, 'dist'); assert.ok(manifest.project_id);
+const manifest = JSON.parse(await readFile('.openai/hosting.json','utf8')); assert.equal(manifest.d1, 'CONTACT_DB'); assert.ok(manifest.project_id); assert.ok(existsSync('dist/server/index.js'));
+assert.ok(home.includes('/images/maven-bridge-logo.png')); assert.ok(home.includes('/images/knomo-logo.webp'));
+assert.ok(home.includes('bharatsingh2110023@gmail.com')); assert.ok(home.includes('vaibhvbhardwj@gmail.com'));
 console.log(`Verified ${routes.length} pre-rendered pages, unique metadata, all 3 home anchors and ${checked} asset references.`);

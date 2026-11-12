@@ -22,4 +22,4 @@ https://github.com/google/fonts/tree/main/ofl/dmsans
 
 ## Original assets
 
-Decorative SVGs in `public/decor/`, the monogram and interface illustrations were made for this project. The typographic brand treatment is a provisional design, not a claim of owner-approved logo artwork. No reference-site assets or source were copied.
+Decorative SVGs in `public/decor/` and interface illustrations were made for this project. The Maven Bridge and Knomo logo files were supplied by the owner and are preserved in `public/images/`. CSS frames their original whitespace for display; the raster files are unmodified. No reference-site assets or source were copied.

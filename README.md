@@ -1,64 +1,111 @@
 # Maven Bridge × Knomo Developers
 
-A responsive three-page React website based on `../Maven_Bridge_Florida_Website_Build_Brief.md`. Home contains Services, industry Solutions and AI Products. About explains the partnership. Contact supports a manually arranged discovery conversation. Privacy, Terms and a 404 are utility pages.
+A three-page React + Vite + TypeScript business website with coastal design, original decorative SVGs, supplied business logos, industry solutions and interactive synthetic-data AI walkthroughs. Home contains Services, Solutions and AI Agents as anchored sections. About explains the partnership; Contact handles project inquiries. Privacy, Terms and 404 are utility routes.
 
-## Local setup
+## Confirmed business information
 
-Use Node 22.12+ or 24 and npm.
+- Public business contacts: `bharatsingh2110023@gmail.com`, `vaibhvbhardwj@gmail.com`.
+- Inquiry notifications go to `kafakaaaa@gmail.com` through the owner's EmailJS account. This operational inbox is not presented as a public business contact in the UI.
+- Maven Bridge handles business strategy, discovery, financial and commercial coordination, management and client relationships.
+- Knomo Developers handles engineering, development, AI configuration, integrations and technical delivery.
+- AI agents are built on demand against client requirements. A call AI agent demo is available; each client implementation requires discovery, business-specific configuration, integration and testing. The on-page walkthrough remains illustrative, and Virtual AI HR remains a concept example.
+- The owner supplied `maven-bridge-logo.png` and `knomo-logo.webp`. The originals are preserved in `public/images/`; CSS frames surrounding whitespace without modifying the raster artwork.
+
+## Local development
+
+Use Node 22.12+ or 24 and npm (Node 24 is recommended for the SQLite rate-limit tests).
 
 ```sh
 npm install
 npm run dev
 npm run build
-npm run preview
 npm test
 node scripts/verify-build.mjs
+node scripts/verify-worker.mjs
 ```
 
-`npm run dev` serves the site and the contact endpoint locally at the printed Vite URL (normally `http://localhost:5173`). Copy `.env.example` to `.env.local` and configure the server-only email settings if testing real delivery. `SITE_URL` must exactly match the local origin including port. Restart the dev server after changing environment settings. The local endpoint is for development and does not reproduce Netlify's edge rate limiting. `npm run dev:full` uses the official Netlify CLI through npx for host integration testing; install/run it when needed.
+`npm run dev` starts Vite with a local `/api/contact` adapter. Copy `.env.example` to `.env.local`, enter keys locally and set `SITE_URL` to the printed Vite origin if testing real email. Do not commit `.env.local`. Vite embeds only public `VITE_*` settings; all private provider values remain server-only. The local Vite adapter does not reproduce hosted D1 or Netlify edge rate limiting.
 
-The production build runs strict TypeScript checking, Vite compilation and static rendering of all marketing/legal routes plus a 404. Direct routes contain real HTML before JavaScript runs; React mounts the interactive experience. Product demo code is loaded separately. No Three.js is shipped: the coastal image, original SVGs and restrained Motion interactions provide depth without WebGL overhead. Reduced motion removes nonessential motion.
+`npm run build` strictly type-checks, compiles the frontend, pre-renders the marketing/legal pages and 404, then builds a Worker for Sites. The Worker embeds the local runtime assets so the hosted backend can serve the complete website and `/api/contact` from one origin. Text assets are gzip-compressed; image/font bytes remain in their original formats. No runtime filesystem or raw SMTP connection is required. `dist/`, `.sites-runtime/` and other generated files are ignored by Git.
 
-## Primary production host: Netlify
+## EmailJS: notification plus acknowledgement
 
-1. Import this `maven-bridge` directory into a Netlify project, or connect its source repository. If your repository includes the parent brief, set the base directory to `maven-bridge`. Keep `netlify.toml` in the selected base directory.
-2. Use `npm run build` and publish `dist`. Netlify bundles `netlify/functions/contact.ts` as the only contact backend. Its exported custom route is `/api/contact`, with per-IP/per-domain edge rate limiting (5 requests per 180 seconds). The pre-rendered routes are served directly; unknown routes use `404.html`.
-3. Set **server-only Function-scope** environment variables in Netlify: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_APP_PASSWORD`, `CONTACT_TO_EMAIL`, `SITE_URL`. Use the exact final origin for `SITE_URL`, such as `https://your-real-domain.example` (no path). Do not put a password in any `VITE_*` variable, source file, public directory or chat message.
-4. With an authorized Gmail account, use `smtp.gmail.com`, port `465`, an eligible Google app password and the authorized sender address. Configure account two-step verification and check app-password eligibility in the account. Only the configured business inbox receives inquiries; the user's email becomes Reply-To. The transport requires TLS. No auto-reply is sent.
-5. Set public build variables `VITE_SITE_URL`, `VITE_CONTACT_EMAIL` and optionally `VITE_CONTACT_PHONE` to verified details, then rebuild. `VITE_SITE_URL` generates canonical links, social URLs and the sitemap. Until configured, direct email/phone actions are omitted. The private Sites review build can use its own expected origin; replace it for the Netlify production build.
-6. Verify `GET /api/contact` returns `{"configured":true}`, submit an authorized test inquiry, and confirm inbox receipt. Only then share the contact page with prospects. Test spam/rate-limit behavior on Netlify; the edge limit is host-enforced. SMTP acceptance is not proof of ultimate inbox placement.
-7. Confirm the legal identity, privacy contact, retention policy and draft legal text before public launch. Configure your final domain in Netlify and rebuild the metadata.
+The Gmail SMTP transport has been replaced with EmailJS's HTTPS API. No Gmail app password is required by this project.
 
-Netlify's Free plan allows commercial projects per its [official Free plan announcement](https://www.netlify.com/blog/introducing-netlify-free-plan/). Current credit-based Free plans include 300 monthly credits; production deploys, requests, bandwidth and compute consume credits. Sites can pause when the included credits are exhausted. Review the account's actual plan before launch; a free tier is not a guarantee of free operation at every traffic level. See [current pricing](https://www.netlify.com/pricing/) and [credit plan documentation](https://docs.netlify.com/manage/accounts-and-billing/billing/billing-for-credit-based-plans/credit-based-pricing-plans/). Reviewed November 10, 2026.
+1. Browser validates and submits the inquiry to the same-origin `/api/contact` endpoint.
+2. Server enforces validation, origin checking, a 16 KB body limit, a honeypot and hosted rate limiting.
+3. Server triggers notification template `template_t2evd56` using service `service_iim5qoe`, sending all entered details to `kafakaaaa@gmail.com` with the visitor's email as Reply-To.
+4. After at least 1.1 seconds, server triggers acknowledgement template `template_1qxf57q` addressed to the visitor.
+5. A successful team notification is the acceptance boundary. If acknowledgement delivery fails afterward, the response still confirms the accepted inquiry and the page explains that resubmission is unnecessary. No unverified meeting time or response deadline is promised.
 
-Do not deploy this SMTP function as a Cloudflare Worker: raw SMTP sockets and the Node transport are specific to the chosen Netlify serverless path. The companion private ChatGPT Sites deployment is a **static review copy**; it does not run Netlify functions. Its contact page truthfully reports unavailable delivery and allows a local brief download. Configuring SMTP on Sites alone will not enable this Netlify endpoint. There is no competing email backend.
+See [emailjs/SETUP.md](emailjs/SETUP.md) for exact dashboard settings, variables and copyable notification/acknowledgement HTML. The dashboard notification recipient must be fixed; the acknowledgement recipient uses `{{to_email}}`. Keep the provider's linked auto-reply feature off on the notification template because the application sends the second template itself. EmailJS requires non-browser API requests to be enabled for this server-side path. Private-key authorization is supported if your account requires it.
 
-## Optional private Google Sheets CRM
+**The private key exposed in chat should be rotated in EmailJS. No screenshot key or replacement secret belongs in this repository.** Store `EMAILJS_PRIVATE_KEY` only in runtime settings if required. Even the public key is supplied through server configuration in this implementation. Template and service IDs are nonsecret and are included in `.env.example`.
 
-The email path works independently. To enable CRM logging, create a private sheet tab named `Leads` with these 17 columns:
+Required runtime variables:
+
+| Variable | Purpose |
+|---|---|
+| `EMAILJS_SERVICE_ID` | `service_iim5qoe` |
+| `EMAILJS_NOTIFICATION_TEMPLATE_ID` | `template_t2evd56` |
+| `EMAILJS_ACK_TEMPLATE_ID` | `template_1qxf57q` |
+| `EMAILJS_PUBLIC_KEY` | Account's public API key, set directly in hosting settings |
+| `EMAILJS_PRIVATE_KEY` | Optional server-only key if required by EmailJS account security |
+| `CONTACT_TO_EMAIL` | `kafakaaaa@gmail.com` |
+| `CONTACT_REPLY_TO_EMAIL` | `bharatsingh2110023@gmail.com` |
+| `SITE_URL` | Exact primary website origin, including `www` if applicable |
+
+Public build variables are `VITE_SITE_URL`, `VITE_CONTACT_EMAIL`, `VITE_SECONDARY_CONTACT_EMAIL`, and optional `VITE_CONTACT_PHONE`. Both supplied business emails are defaults; no phone or address is invented. Set `VITE_SITE_URL` before building to generate canonical URLs, social URLs and the sitemap.
+
+## Hosted Sites version
+
+The project identity is preserved in `.openai/hosting.json`. The Site now uses a Worker rather than the original static-only review deployment. Its existing audience is preserved when publishing.
+
+- Entrypoint: `dist/server/index.js`, default-exported Worker `fetch` handler.
+- Assets: embedded at build time by `scripts/build-worker.mjs`; no asset storage binding is required.
+- Contact rate limiting: logical D1 binding `CONTACT_DB`; migration `drizzle/0000_contact_rate_limits.sql` is applied during publication.
+- Rate-limit records contain a window-specific hashed network identifier, count and bucket—not inquiry messages. Hosted calls fail closed if the database is unavailable. The threshold is five accepted-form attempts per 180-second window. Old buckets are removed on subsequent submissions. If the platform supplies no trusted connecting identifier, visitors share a restrictive fallback bucket.
+- EmailJS settings are native Sites runtime environment values. Update settings and deploy a saved version to apply them. Never store runtime keys in the hosting manifest.
+- The optional Google Sheets adapter is Netlify-only. It is not included in the Worker.
+
+## Netlify deployment from GitHub
+
+Repository: https://github.com/vaibhvbhardwj/MB-KNOMO
+
+The application is at the **repository root**. Import that GitHub repository into Netlify with no `maven-bridge` base subdirectory. Use the included `netlify.toml`:
+
+- Build command: `npm run build:netlify`.
+- Publish directory: `dist`.
+- Functions directory: `netlify/functions`.
+- Node version: 22 (22.12+).
+
+`build:netlify` produces frontend pages without embedding a duplicate Worker in the public assets. Netlify runs `netlify/functions/contact.ts` at its exported `/api/contact` route. The exported function config applies edge rate limiting, five requests per 180 seconds per domain/IP. Unknown static routes use the native custom `404.html` behavior.
+
+Set the EmailJS runtime variables above under Project configuration → Environment variables. If scope controls are available, include Functions for the server values and Builds for public `VITE_*` values; the default all-scopes setting also works. Use Production context and rebuild/redeploy after changes. Do not enter private values in `netlify.toml` or GitHub source files.
+
+For an already linked Netlify project:
+
+```sh
+npx netlify-cli login
+npx netlify-cli deploy --prod --context production
+```
+
+Review the account's actual hosting plan and usage limits before public launch. This source does not promise unlimited free hosting or email. Each inquiry normally uses two EmailJS send requests.
+
+## Optional private Google Sheets CRM (Netlify only)
+
+Email delivery works independently. Create a private spreadsheet tab named `Leads` with these columns:
 
 `created_at, name, email, company, phone, service_interest, budget, message, preferred_callback, timezone, utm_source, utm_medium, utm_campaign, referral_code, referral_source, industry, status`
 
-Enable the Sheets API for a service account and share only the target spreadsheet with that account's email. Add Function-scope `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY` (PEM, escaped `\n` accepted) and `GOOGLE_SHEET_ID`. Never publish the sheet or put the key in frontend variables. The append uses RAW values with formula-injection protection. SMTP is the primary delivery channel: a CRM outage does not turn an already accepted email into a false failure or invite duplicate submissions. Monitor generic server logs to detect CRM errors; no submitted personal details or credentials are logged. Reconcile missing CRM rows from the business inbox.
+Enable the Sheets API for an authorized service account; share only the target spreadsheet with that account. Configure `GOOGLE_SERVICE_ACCOUNT_EMAIL`, `GOOGLE_PRIVATE_KEY` (PEM; escaped `\n` accepted), and `GOOGLE_SHEET_ID` as server variables. The Netlify adapter appends RAW values with spreadsheet formula protection. A CRM failure does not change a successfully accepted team notification into a false failure. Reconcile missing rows from the notification inbox. The sheet must not be public.
 
-## Form and privacy behavior
+## Editing, privacy and verification
 
-Shared Zod validation runs on client and server. The server enforces a 16 KB request limit, origin validation, JSON content type, a honeypot, and host edge rate limiting. Email uses plain text with a fixed recipient and fixed service-based subject. Success appears only after SMTP accepts a recipient. Errors preserve the form. A local text download never sends an inquiry. The live SMTP and Sheets integrations have not been tested with owner credentials because none were supplied.
+Editable business copy lives in `src/data/*.ts`. Layout and responsive styling are in `src/styles/main.css` and `branding.css`. The coast photograph and font/icon licensing are documented in `THIRD_PARTY_NOTICES.md`. The logos are owner-provided assets.
 
-Campaign parameters `utm_source`, `utm_medium`, `utm_campaign`, `ref` travel through internal navigation in the URL. They are submitted only if the visitor separately opts in, and are not stored in cookies/local storage. No analytics provider is installed and no personal data is sent to analytics. Product demos use synthetic data, make no real calls, confirm no appointments and make no hiring decisions.
+Campaign/referral URL values are submitted only with separate opt-in and are not stored in cookies/local storage. No analytics or advertising provider is installed. No private keys, provider error bodies or inquiry text are logged. A local brief download does not submit an inquiry. Notification acceptance does not guarantee ultimate inbox placement, and the page distinguishes acknowledgement failures.
 
-## Editing and assets
+Automated checks cover input/origin/payload/spam rejection, fixed-recipient delivery, acknowledgement sequencing and failure, provider throttling, CRM failure, attribution consent and persistent SQL rate-limit behavior. Artifact checks cover pre-rendered routes, metadata, Home anchors, logos, public contacts, bundled HTML/assets, gzip, HEAD and 404 handling. Browser automation was unavailable; real-device visual, focus and mobile-overflow checks remain unverified.
 
-Business copy is in `src/data/content.ts`, `services.ts`, `solutions.ts`, `products.ts`, `contact.ts`, and `legal.ts`. Tokens and responsive styles are in `src/styles/main.css`. Both parties have distinct roles. No fictional client logos, testimonials, results, case studies, US addresses or Adobe endorsement claims are included.
-
-The genuine Miami Beach photograph is licensed and optimized locally; see `THIRD_PARTY_NOTICES.md`. All production photo/font/icon requests use local assets. Rebuild coastal derivatives with `node scripts/prepare-assets.mjs`. Update the selected Boxicons styles with `node scripts/prepare-icons.mjs` if you add icon names. Font and icon license files ship in `/licenses/`.
-
-## Verification and launch inputs
-
-- Strict TypeScript and production build; backend automated tests for invalid input, origin, payload limits, honeypot, disabled delivery, accepted/rejected email, CRM failure and attribution consent.
-- Build verifier checks six pre-rendered pages, unique metadata, real image/font/script links and Home anchors.
-- Dependency audit fixed to zero known vulnerabilities at build time.
-- Automated browser surfaces were unavailable in the authoring session. Visual QA, real-device overflow at 375px/tablet/desktop, keyboard focus and mobile menu behavior still need a browser pass. Responsive layouts, native dialog focus trapping/restoration, keyboard-operated industry tabs and reduced-motion rules are implemented, but do not treat that as measured browser verification. No Lighthouse/Core Web Vitals claims are made.
-- Real SMTP delivery, Netlify deployment/rate limiting and optional Sheets writes require owner settings and are unverified. No prospect messages were sent during development.
-
-Before public launch, confirm logos and partnership wording, legal identity, domain, contact details, privacy/retention terms, final imagery approval and actual product readiness. Replace the provisional monogram if approved brand artwork is supplied. Product walkthroughs remain clearly marked concept demos until real integrations exist.
+Before final public launch, confirm the legal operator and retention policy, review the draft Privacy/Terms text, verify the configured EmailJS template contents and sender authorization, and check real inbox receipt for both emails. No fake customer results, certifications, Florida office address or third-party endorsement is claimed.

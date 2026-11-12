@@ -1,13 +1,15 @@
 export const brand = {
   name: 'Maven Bridge', partner: 'Knomo Developers',
-  email: import.meta.env.VITE_CONTACT_EMAIL || '', phone: import.meta.env.VITE_CONTACT_PHONE || '',
+  email: import.meta.env.VITE_CONTACT_EMAIL || 'bharatsingh2110023@gmail.com',
+  secondaryEmail: import.meta.env.VITE_SECONDARY_CONTACT_EMAIL || 'vaibhvbhardwj@gmail.com',
+  phone: import.meta.env.VITE_CONTACT_PHONE || '',
   url: import.meta.env.VITE_SITE_URL || '',
   eyebrow: 'BUSINESS STRATEGY × TECHNOLOGY × GROWTH',
   hero: ['Business ideas', 'deserve exceptional', 'execution.'],
   intro: 'We connect business clarity with thoughtful engineering. From your first idea to your next stage of growth, Maven Bridge and Knomo Developers help you move forward.',
   partnership: [
-    { name: 'Maven Bridge', role: 'THE BUSINESS PERSPECTIVE', icon: 'compass', description: 'Strategy, discovery and a clear path forward. We translate your business challenge into a plan everyone can get behind.', items: ['Discovery & business analysis', 'Strategy & requirements', 'Client relationships & delivery governance'] },
-    { name: 'Knomo Developers', role: 'THE ENGINEERING PERSPECTIVE', icon: 'code-alt', description: 'The craft behind the solution. Our technical delivery partner turns the agreed plan into useful, maintainable digital experiences.', items: ['Product design & development', 'AI workflows & integrations', 'Deployment & technical delivery'] },
+    { name: 'Maven Bridge', role: 'BUSINESS, FINANCE & MANAGEMENT', icon: 'compass', logo: 'maven', description: 'Maven Bridge leads the business side of the partnership: discovery, strategy, commercial and financial coordination, management and client relationships. We turn your requirements into a clear delivery plan.', items: ['Business analysis, strategy & requirements', 'Finance, commercial coordination & management', 'Client relationships & delivery governance'] },
+    { name: 'Knomo Developers', role: 'ENGINEERING & TECHNICAL DELIVERY', icon: 'code-alt', logo: 'knomo', description: 'Knomo Developers handles the technical work: engineering, development, integrations and implementation. AI agents are configured around each client’s requirements, business knowledge and workflows.', items: ['Product design, software & development', 'Custom AI agents, configuration & integrations', 'Technical implementation, deployment & support'] },
   ],
 };
 export const navigation = [{ label: 'Home', href: '/' }, { label: 'Services', href: '/#services' }, { label: 'Solutions', href: '/#solutions' }, { label: 'About', href: '/about' }, { label: 'Contact', href: '/contact' }];
@@ -26,8 +28,9 @@ export const values = [
 ];
 export const faqs = [
   { question: 'What kinds of projects can we discuss?', answer: 'Websites, web apps, AI-assisted workflows, business analysis, integrations and agency delivery partnerships. Tell us the challenge, even if you do not yet have a technical brief.' },
-  { question: 'What happens after I send an inquiry?', answer: 'Once inquiries are enabled, the team reviews your message and contacts you to arrange a discovery conversation. Any day or time you suggest is a request, not a confirmed appointment.' },
-  { question: 'How do Maven Bridge and Knomo work together?', answer: 'Maven Bridge leads discovery, business planning and client coordination. Knomo Developers provides engineering and technical implementation against the agreed scope.' },
+  { question: 'What happens after I send an inquiry?', answer: 'Once delivery is configured, your inquiry is sent to the team and an acknowledgement is requested for your email address. The team reviews the requirements and arranges a discovery conversation manually. A preferred day or time is a request, not a confirmed appointment.' },
+  { question: 'How do Maven Bridge and Knomo work together?', answer: 'Maven Bridge handles business strategy, financial and commercial coordination, management and client relationships. Knomo Developers handles engineering, development and technical implementation against the agreed requirements.' },
+  { question: 'Can I use the AI call agent immediately?', answer: 'We have a call AI agent demo to explore. A client implementation needs discovery and configuration for your requirements, business knowledge, call flows and integrations. We build AI agents on demand; the demo is not a ready-to-use deployment for every business.' },
   { question: 'Do I need to know my budget or technical requirements?', answer: 'No. You can select “Not sure” for your budget. Discovery helps define the requirements, priorities and an appropriate scope.' },
 ];
 export const engagementModels = [

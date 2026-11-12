@@ -1,0 +1,27 @@
+/* The supplied logo files are preserved. Layout cropping removes surrounding whitespace. */
+.brand .brand-mark,.brand-mark{display:inline-block;position:relative;flex:0 0 auto;width:42px;height:42px;overflow:hidden;background:#fff;border:1px solid #d8d7cd;border-radius:6px}
+.brand-mark img{position:absolute;display:block;max-width:none;object-fit:contain}
+.maven-mark img{width:200%;height:200%;left:-50%;top:-41%}
+.knomo-mark img{width:120%;height:120%;left:-10%;top:-10%}
+.brand>span:not(.brand-mark){min-width:0}
+.lockup-business{display:inline-flex;gap:10px;align-items:center;font-family:Manrope,sans-serif;font-weight:600;letter-spacing:.09em;font-size:11px;line-height:1.4}
+.lockup-business small{display:block;font-size:6px;font-weight:400;letter-spacing:.2em;margin-top:3px}
+.lockup-business .brand-mark{width:34px;height:34px;border-radius:4px}
+.supplied-lockup{gap:22px}
+.supplied-partner{flex-wrap:wrap;max-width:300px;gap:10px}
+.supplied-partner .brand-mark{width:32px;height:32px}
+.partner-wordmark.supplied-partner>b{font-size:14px;letter-spacing:0}
+.partner-icon.supplied-logo{width:48px;height:48px;background:transparent}
+.partner-icon .brand-mark{width:48px;height:48px}
+.partner-cards .mini-label{max-width:85%;min-height:28px}
+.partnership-flow .brand-mark{width:49px;height:49px}
+.direct-contact{flex-direction:column;gap:18px}
+.business-email{font-size:12px;overflow-wrap:anywhere;min-width:0}
+.business-email>span{min-width:0}
+.business-email small{display:block;font-size:7px;letter-spacing:.12em;color:var(--muted);margin-bottom:4px}
+.footer-links a{overflow-wrap:anywhere}
+.footer-links>div:last-child{min-width:0}
+.product-label>small{line-height:1.6;max-width:215px}
+.partner-cards h3{padding-right:35px}
+@media(max-width:900px){.brand .brand-mark{width:34px;height:34px}.footer-links{gap:35px}.lockup-business{font-size:10px}}
+@media(max-width:640px){.brand .brand-mark{width:32px;height:32px}.brand{gap:8px}.brand>span:not(.brand-mark){font-size:12px}.supplied-lockup{gap:13px}.lockup-business{font-size:8px;gap:7px}.lockup-business .brand-mark{width:28px;height:28px}.lockup-business small{font-size:5px}.footer-links{gap:28px;flex-wrap:wrap}.partner-cards .mini-label{max-width:80%;font-size:7px}.product-label>small{margin-left:0;max-width:210px;font-size:6px}.partner-icon.supplied-logo{right:20px;top:25px}.direct-contact .business-email{font-size:12px}}
