@@ -13,7 +13,11 @@ for (const file of routes) {
 }
 const home = await readFile('dist/index.html','utf8');
 for (const id of ['services','solutions','products']) assert.ok(home.includes(`id="${id}"`));
-const manifest = JSON.parse(await readFile('.openai/hosting.json','utf8')); assert.equal(manifest.d1, 'CONTACT_DB'); assert.ok(manifest.project_id); assert.ok(existsSync('dist/server/index.js'));
+const manifest = JSON.parse(await readFile('.openai/hosting.json','utf8')); assert.equal(manifest.d1, 'CONTACT_DB'); assert.ok(manifest.project_id); if(!process.argv.includes('--netlify')) assert.ok(existsSync('dist/server/index.js'));
 assert.ok(home.includes('/images/maven-bridge-logo.png')); assert.ok(home.includes('/images/knomo-logo.webp'));
 assert.ok(home.includes('bharatsingh2110023@gmail.com')); assert.ok(home.includes('vaibhvbhardwj@gmail.com'));
+const contact = await readFile('dist/contact/index.html','utf8');
+const submitButton = contact.match(/<button\b[^>]*type="submit"[^>]*>/)?.[0];
+assert.ok(submitButton && !/\bdisabled\b/.test(submitButton), 'The contact form must not be disabled by a readiness preflight.');
+assert.ok(!contact.includes('The inquiry form is temporarily unavailable.'), 'Removed availability banner must stay removed.');
 console.log(`Verified ${routes.length} pre-rendered pages, unique metadata, all 3 home anchors and ${checked} asset references.`);

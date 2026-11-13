@@ -2,6 +2,13 @@ export const products = [
   { id: 'ai-call-picker', name: 'AI Call Picker', icon: 'phone-call', headline: 'Every call deserves an answer.', description: 'We have a call AI agent demo to show what is possible. For your business, we configure the agent around your requirements, knowledge, call flows and integrations before deployment. The walkthrough below uses illustrative data.', features: ['Configured for your business knowledge', 'Tailored call flows & lead capture', 'Human callback and handoff requirements'], cta: 'Request an AI Call Demo', offering: 'DEMO AVAILABLE · CUSTOM CONFIGURATION', steps: ['Incoming inquiry', 'Understand & capture', 'Team follow-up'] },
   { id: 'virtual-ai-hr', name: 'Virtual AI HR', icon: 'user-voice', headline: 'Let HR focus on people.', description: 'An example of the AI agents we can build on demand: candidate FAQs, interview coordination and HR knowledge support, scoped and configured for your operation. People stay in charge of consequential decisions.', features: ['Requirements-led configuration', 'HR knowledge & workflow integrations', 'Human review by design'], cta: 'Discuss an HR Agent', offering: 'ILLUSTRATIVE CONCEPT · BUILT TO REQUIREMENT', steps: ['Candidate question', 'Coordinate a request', 'HR review'] },
 ];
+export const customAgentCTA = {
+  eyebrow: 'BUILT ON DEMAND',
+  title: 'Need a different AI agent?',
+  description: 'We build and configure AI agents around your requirements, business knowledge, workflows and integrations.',
+  cta: 'Discuss your AI agent',
+  href: '/contact?interest=ai-automation',
+};
 export const callScenarios = [
   { name: 'Hotel reservation inquiry', question: 'Hi, I’m looking for a room for two next Friday. Can someone help?', response: 'I can capture your request for the reservations team. What is the best way for them to reach you?', summary: 'Room inquiry · 2 guests · next Friday', action: 'Callback requested · awaiting team confirmation' },
   { name: 'Real-estate site visit', question: 'Could I arrange a visit to the waterfront property this weekend?', response: 'I can pass a viewing request to the property team. Which day would you prefer?', summary: 'Property viewing · weekend preference', action: 'Visit request captured · agent follow-up required' },

@@ -5,4 +5,5 @@ import './styles/icons.css';
 import './styles/main.css';
 import './styles/branding.css';
 import './styles/motion.css';
+import './styles/refinements.css';
 createRoot(document.getElementById('root')!).render(<BrowserRouter><App /></BrowserRouter>);
