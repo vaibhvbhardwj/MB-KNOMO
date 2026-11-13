@@ -23,9 +23,9 @@ export default {
     const bytes = Uint8Array.from(atob(asset.body), c => c.charCodeAt(0));
     let body: BodyInit | null = bytes;
     if (asset.gzip) {
-      if (request.headers.get('accept-encoding')?.includes('gzip')) headers.set('Content-Encoding', 'gzip');
-      else body = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
-      headers.set('Vary', 'Accept-Encoding');
+      // Assets are compressed inside the bundle only. The hosting gateway owns wire
+      // compression and can normalize Content-Encoding, so return decoded bytes.
+      body = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
     }
     if (request.method === 'HEAD') body = null;
     return new Response(body, { status: found ? 200 : 404, headers });

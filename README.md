@@ -26,7 +26,7 @@ node scripts/verify-worker.mjs
 
 `npm run dev` starts Vite with a local `/api/contact` adapter. Copy `.env.example` to `.env.local`, enter keys locally and set `SITE_URL` to the printed Vite origin if testing real email. Do not commit `.env.local`. Vite embeds only public `VITE_*` settings; all private provider values remain server-only. The local Vite adapter does not reproduce hosted D1 or Netlify edge rate limiting.
 
-`npm run build` strictly type-checks, compiles the frontend, pre-renders the marketing/legal pages and 404, then builds a Worker for Sites. The Worker embeds the local runtime assets so the hosted backend can serve the complete website and `/api/contact` from one origin. Text assets are gzip-compressed; image/font bytes remain in their original formats. No runtime filesystem or raw SMTP connection is required. `dist/`, `.sites-runtime/` and other generated files are ignored by Git.
+`npm run build` strictly type-checks, compiles the frontend, pre-renders the marketing/legal pages and 404, then builds a Worker for Sites. The Worker embeds the local runtime assets so the hosted backend can serve the complete website and `/api/contact` from one origin. Text assets are gzip-compressed inside the bundle and decoded before responding; the hosting gateway handles HTTP compression. Image/font bytes remain in their original formats. No runtime filesystem or raw SMTP connection is required. `dist/`, `.sites-runtime/` and other generated files are ignored by Git.
 
 ## EmailJS: notification plus acknowledgement
 
