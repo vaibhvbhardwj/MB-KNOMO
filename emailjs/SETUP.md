@@ -24,10 +24,12 @@ The API keys are intentionally absent from source. Set `EMAILJS_PUBLIC_KEY` on t
    - **From Name:** `Maven Bridge × Knomo Developers`.
    - **From Email:** the connected service's default authorized email.
    - **Reply-To:** `{{reply_to}}` (configured as `bharatsingh2110023@gmail.com`).
-   - **Subject:** `We received your inquiry — Maven Bridge × Knomo Developers`.
+   - **Subject:** `We received your message — Maven Bridge × Knomo Developers`.
    - **Body:** paste `acknowledgement.html` into the HTML editor.
 5. Leave EmailJS's automatic linked auto-reply feature **off on the notification template**. This application sends the acknowledgement template separately; enabling both would cause duplicate acknowledgements.
 6. Use double-brace escaped variables, not triple-brace unescaped HTML. The acknowledgement deliberately contains a fixed receipt message rather than relaying the visitor's project text to an arbitrary recipient.
+
+The HTML files include inline styling, mobile adjustments, table layouts and a consistent navy/sand/teal/coral palette. They do not depend on JavaScript, remote images or web fonts. Open **Content → Edit Content → HTML/source** and paste the entire matching HTML file, then save. The existing `{{email}}` recipient also works for the acknowledgement because the application supplies both `email` and `to_email`; `{{to_email}}` is the documented setting. All exact subjects and field values are also in `template-settings.json`.
 
 ## Runtime variables
 

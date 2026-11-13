@@ -1,0 +1,37 @@
+.hero-content{z-index:2}.hero-deco{position:absolute;pointer-events:none;z-index:1;user-select:none}
+.hero-orbit{right:4%;top:90px;width:min(37vw,460px);height:auto;opacity:.3;animation:coastal-drift 9s ease-in-out infinite alternate}
+.hero-palm{right:-85px;bottom:-150px;width:370px;height:auto;opacity:.38;transform-origin:90% 100%;animation:palm-sway 11s ease-in-out infinite alternate}
+.hero-underline path{stroke-dasharray:360;stroke-dashoffset:360;animation:underline-draw 1.2s .3s ease forwards}
+.scroll-cue .bx{animation:scroll-nudge 2.8s ease-in-out infinite}
+.header-inner{transition:height .25s ease}
+.service-reveal{min-width:0}.service-card{height:100%}.service-icon{transition:transform .3s,background .3s}
+.service-card:hover .service-icon{transform:rotate(-9deg);background:#c5e6dc}
+.button .bx,.text-link .bx,.nav-cta .bx{transition:transform .25s}
+.button:hover .bx,.text-link:hover .bx,.nav-cta:hover .bx{transform:translateX(4px)}
+.section-leaves{animation:leaf-drift 10s ease-in-out infinite alternate;transform-origin:90% 0}
+.solutions-section,.products-section,.about-hero,.contact-hero{position:relative;isolation:isolate;overflow:hidden}
+.solutions-section>.container,.products-section>.container{position:relative;z-index:1}
+.solutions-section::before{content:'';position:absolute;pointer-events:none;left:-10%;bottom:-75px;width:120%;height:390px;background:url('/decor/tidal-contours.svg') center/cover no-repeat;opacity:.22;z-index:0}
+.products-section::before{content:'';position:absolute;pointer-events:none;right:-140px;top:220px;width:400px;height:550px;background:url('/decor/coastal-orbit.svg') center/contain no-repeat;opacity:.16;z-index:0}
+.about-hero::after{content:'';position:absolute;right:11%;top:95px;width:360px;height:520px;background:url('/decor/coastal-orbit.svg') center/contain no-repeat;opacity:.25;pointer-events:none}
+.contact-hero::before{content:'';position:absolute;right:-140px;bottom:-100px;width:850px;height:300px;background:url('/decor/tidal-contours.svg') center/cover no-repeat;opacity:.18;pointer-events:none}
+.solution-board{transition:transform .5s,box-shadow .5s}.solution-art:hover .solution-board{transform:rotate(0) translateY(-4px);box-shadow:0 20px 40px #2143381c}
+.solution-panel{animation:solution-reveal .5s ease both}
+.process-number>span{background:linear-gradient(90deg,#ffffff20,#f3a58b80,#ffffff20);background-size:200% 100%;animation:process-light 5s linear infinite}
+.heron-art{transition:transform .65s}.approach-heading:hover .heron-art{transform:translateY(-6px)}
+.call-orb{position:relative}.call-orb::after{content:'';position:absolute;inset:-5px;border:1px solid #75b9a7;border-radius:50%;animation:call-pulse 3s ease-out infinite;pointer-events:none}
+.footer-waves{width:108%;max-width:none;left:-4%;animation:wave-drift 13s ease-in-out infinite alternate}
+.mobile-menu[open] .mobile-menu-content{animation:drawer-arrive .28s ease both}
+@keyframes coastal-drift{to{transform:translateY(-12px)}}
+@keyframes palm-sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+@keyframes underline-draw{to{stroke-dashoffset:0}}
+@keyframes scroll-nudge{0%,70%,100%{transform:translateY(0)}80%{transform:translateY(5px)}}
+@keyframes leaf-drift{from{transform:rotate(-20deg) translateY(0)}to{transform:rotate(-16deg) translateY(6px)}}
+@keyframes solution-reveal{from{opacity:.3;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes process-light{to{background-position:200% 0}}
+@keyframes call-pulse{0%{transform:scale(.9);opacity:.5}75%,100%{transform:scale(1.2);opacity:0}}
+@keyframes wave-drift{to{transform:translateX(3%)}}
+@keyframes drawer-arrive{from{opacity:.2;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:900px){.hero-orbit{right:-2%;width:330px;opacity:.23}.hero-palm{right:-120px;width:320px;opacity:.28}}
+@media(max-width:640px){.hero-orbit{display:none}.hero-palm{right:-160px;bottom:-160px;width:330px;opacity:.22}.solutions-section::before{height:280px;opacity:.15}.products-section::before{right:-210px;opacity:.12}.about-hero::after{width:240px;right:-60px;opacity:.13}.contact-hero::before{width:500px;opacity:.13}.process-number>span{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero-underline path{stroke-dashoffset:0}.hero-deco,.footer-waves,.section-leaves,.solution-panel,.call-orb::after,.process-number>span,.scroll-cue .bx{animation:none!important}.mobile-menu[open] .mobile-menu-content{animation:none!important}}

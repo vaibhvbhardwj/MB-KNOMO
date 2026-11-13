@@ -1,0 +1,20 @@
+{
+  "acknowledgement": {
+    "template_id": "template_1qxf57q",
+    "subject": "We received your message — Maven Bridge × Knomo Developers",
+    "to_email": "{{to_email}}",
+    "from_name": "Maven Bridge × Knomo Developers",
+    "from_email": "Use Default Email Address",
+    "reply_to": "{{reply_to}}",
+    "content_file": "acknowledgement.html"
+  },
+  "notification": {
+    "template_id": "template_t2evd56",
+    "subject": "New project inquiry — {{service_interest}}",
+    "to_email": "kafakaaaa@gmail.com",
+    "from_name": "Maven Bridge website",
+    "from_email": "Use Default Email Address",
+    "reply_to": "{{from_email}}",
+    "content_file": "notification.html"
+  }
+}

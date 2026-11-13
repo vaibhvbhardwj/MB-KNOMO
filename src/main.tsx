@@ -4,4 +4,5 @@ import App from './App';
 import './styles/icons.css';
 import './styles/main.css';
 import './styles/branding.css';
+import './styles/motion.css';
 createRoot(document.getElementById('root')!).render(<BrowserRouter><App /></BrowserRouter>);

@@ -1,5 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { createContactHandler, sheetSafe, sendEmailJS, EmailDeliveryError, type EmailRequest } from '../netlify/functions/lib/contact-handler';
 import { contactSchema } from '../src/lib/contact-schema';
 const env = { SITE_URL: 'https://example.test', EMAILJS_SERVICE_ID: 'test-service', EMAILJS_NOTIFICATION_TEMPLATE_ID: 'test-notify', EMAILJS_ACK_TEMPLATE_ID: 'test-ack', EMAILJS_PUBLIC_KEY: 'test-public', CONTACT_TO_EMAIL: 'inbox@example.test', CONTACT_REPLY_TO_EMAIL: 'business@example.test' };
@@ -17,6 +18,11 @@ test('notification includes all inquiry fields, uses fixed recipient, then sends
   assert.deepEqual(await r.json(),{accepted:true,acknowledgementSent:true});assert.equal(emails.length,2);
   assert.equal(emails[0].template,env.EMAILJS_NOTIFICATION_TEMPLATE_ID);assert.equal(emails[0].params.to_email,env.CONTACT_TO_EMAIL);assert.equal(emails[0].params.reply_to,valid.email);assert.equal(emails[0].params.message,valid.message);assert.match(emails[0].params.details,/\$5,000–\$15,000/);assert.match(emails[0].params.details,/A business introduction/);
   assert.equal(emails[1].template,env.EMAILJS_ACK_TEMPLATE_ID);assert.equal(emails[1].params.to_email,valid.email);assert.equal(emails[1].params.reply_to,env.CONTACT_REPLY_TO_EMAIL);assert.ok(!emails[1].params.message.includes(valid.message));assert.deepEqual(delays,[1100]);
+  for (const [index, file] of ['notification.html','acknowledgement.html'].entries()) {
+    const html=readFileSync(new URL(`../emailjs/${file}`,import.meta.url),'utf8');
+    for(const match of html.matchAll(/\{\{([a-z_]+)\}\}/g))assert.ok(match[1] in emails[index].params,`Missing template parameter ${match[1]} in ${file}`);
+    assert.ok(!/<script\b|javascript:/i.test(html),'Email templates must work without JavaScript');
+  }
 });
 test('notification failure does not send acknowledgement or claim success', async () => {let calls=0;const h=createContactHandler(env,{sendEmail:async()=>{calls++;throw new Error('test rejection');},delay:noDelay});assert.equal((await h(req(valid))).status,502);assert.equal(calls,1);});
 test('acknowledgement failure preserves accepted inquiry and does not invite resubmission', async () => {const h=createContactHandler(env,{sendEmail:async email=>{if(email.template===env.EMAILJS_ACK_TEMPLATE_ID)throw new Error('test ack failure');},delay:noDelay});const r=await h(req(valid));assert.equal(r.status,200);assert.deepEqual(await r.json(),{accepted:true,acknowledgementSent:false});});

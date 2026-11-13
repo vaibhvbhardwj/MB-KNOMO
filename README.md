@@ -9,7 +9,7 @@ A three-page React + Vite + TypeScript business website with coastal design, ori
 - Maven Bridge handles business strategy, discovery, financial and commercial coordination, management and client relationships.
 - Knomo Developers handles engineering, development, AI configuration, integrations and technical delivery.
 - AI agents are built on demand against client requirements. A call AI agent demo is available; each client implementation requires discovery, business-specific configuration, integration and testing. The on-page walkthrough remains illustrative, and Virtual AI HR remains a concept example.
-- The owner supplied `maven-bridge-logo.png` and `knomo-logo.webp`. The originals are preserved in `public/images/`; CSS frames surrounding whitespace without modifying the raster artwork.
+- The owner supplied `maven-bridge-logo.png` and `knomo-logo.webp`. Both already have transparent backgrounds. The originals are preserved in `public/images/`; the site displays them without white tiles or borders. Knomo uses a light CSS treatment on dark surfaces for legibility.
 
 ## Local development
 
@@ -39,6 +39,8 @@ The Gmail SMTP transport has been replaced with EmailJS's HTTPS API. No Gmail ap
 5. A successful team notification is the acceptance boundary. If acknowledgement delivery fails afterward, the response still confirms the accepted inquiry and the page explains that resubmission is unnecessary. No unverified meeting time or response deadline is promised.
 
 See [emailjs/SETUP.md](emailjs/SETUP.md) for exact dashboard settings, variables and copyable notification/acknowledgement HTML. The dashboard notification recipient must be fixed; the acknowledgement recipient uses `{{to_email}}`. Keep the provider's linked auto-reply feature off on the notification template because the application sends the second template itself. EmailJS requires non-browser API requests to be enabled for this server-side path. Private-key authorization is supported if your account requires it.
+
+The polished email bodies are self-contained HTML with inline CSS, mobile adjustments and table-based layouts. They contain no JavaScript, remote images or web-font dependencies. Subjects and all EmailJS field settings are in `emailjs/template-settings.json`. Paste the matching HTML into the dashboard's HTML/source editor and save the template; committing the file does not update the EmailJS dashboard automatically.
 
 **The private key exposed in chat should be rotated in EmailJS. No screenshot key or replacement secret belongs in this repository.** Store `EMAILJS_PRIVATE_KEY` only in runtime settings if required. Even the public key is supplied through server configuration in this implementation. Template and service IDs are nonsecret and are included in `.env.example`.
 
@@ -103,6 +105,8 @@ Enable the Sheets API for an authorized service account; share only the target s
 ## Editing, privacy and verification
 
 Editable business copy lives in `src/data/*.ts`. Layout and responsive styling are in `src/styles/main.css` and `branding.css`. The coast photograph and font/icon licensing are documented in `THIRD_PARTY_NOTICES.md`. The logos are owner-provided assets.
+
+The hero uses a compact content-driven height rather than filling the viewport. `src/styles/motion.css` adds coastal SVG arches, palm linework and tidal contour backgrounds; staggered section/card reveals; restrained wave/palm movement; and hover/menu details. Server-rendered content stays visible before JavaScript, and offscreen entrances are activated only when the browser supports them. Reduced-motion preferences remove the nonessential motion. No image-generation edit was needed for either logo.
 
 Campaign/referral URL values are submitted only with separate opt-in and are not stored in cookies/local storage. No analytics or advertising provider is installed. No private keys, provider error bodies or inquiry text are logged. A local brief download does not submit an inquiry. Notification acceptance does not guarantee ultimate inbox placement, and the page distinguishes acknowledgement failures.
 

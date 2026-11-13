@@ -1,10 +1,43 @@
-<h2>New project inquiry — Maven Bridge × Knomo Developers</h2>
-<p><strong>Name:</strong> {{from_name}}</p>
-<p><strong>Email:</strong> {{from_email}}</p>
-<p><strong>Company:</strong> {{company}}</p>
-<p><strong>Interest:</strong> {{service_interest}}</p>
-<h3>Project / business challenge</h3>
-<p style="white-space:pre-wrap">{{message}}</p>
-<h3>All other details</h3>
-<pre style="white-space:pre-wrap;font-family:Arial,sans-serif">{{details}}</pre>
-<p>Callback preferences are requests, not confirmed bookings.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New project inquiry</title>
+  <style>@media only screen and (max-width:600px){.email-shell{width:100%!important}.email-pad{padding:26px 20px!important}.email-title{font-size:32px!important}.field-label{width:115px!important}}</style>
+</head>
+<body style="margin:0;padding:0;background-color:#edf1eb;font-family:Arial,Helvetica,sans-serif;color:#19313d;">
+  <div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;">A new inquiry from {{from_name}} at {{company}}. Review their requirements and reply directly.</div>
+  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#edf1eb;"><tr><td align="center" style="padding:32px 12px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="640" class="email-shell" style="width:640px;max-width:640px;border-collapse:separate;">
+      <tr><td class="email-pad" style="padding:32px 38px;background-color:#102b3f;border-radius:14px 14px 0 0;">
+        <p style="margin:0 0 22px;font-size:11px;letter-spacing:1.5px;font-weight:bold;line-height:1.8;color:#c4dbd3;">MAVEN BRIDGE &times; KNOMO DEVELOPERS</p>
+        <p style="margin:0 0 12px;font-size:10px;letter-spacing:1.7px;font-weight:bold;color:#9bd8c7;">NEW WEBSITE INQUIRY</p>
+        <h1 class="email-title" style="margin:0;font-family:Georgia,'Times New Roman',serif;font-weight:normal;font-size:39px;line-height:1.2;color:#ffffff;">A new conversation.<br><span style="color:#f3a58b;font-style:italic;">A possible next chapter.</span></h1>
+      </td></tr>
+      <tr><td class="email-pad" style="padding:30px 38px;background-color:#fffdf9;">
+        <p style="margin:0 0 7px;font-size:10px;letter-spacing:1.5px;font-weight:bold;color:#628477;">THE PERSON BEHIND THE INQUIRY</p>
+        <h2 style="margin:0 0 7px;font-size:25px;line-height:1.4;color:#19313d;">{{from_name}}</h2>
+        <p style="margin:0;font-size:14px;line-height:1.8;color:#596e70;">{{company}}<br><a href="mailto:{{from_email}}" style="color:#167d74;text-decoration:underline;">{{from_email}}</a></p>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px;background-color:#e8f1e9;border:1px solid #d2e0d4;border-radius:8px;"><tr><td style="padding:19px 22px;"><p style="margin:0 0 6px;font-size:9px;letter-spacing:1.5px;font-weight:bold;color:#4b7a68;">SERVICE / PRODUCT INTEREST</p><p style="margin:0;font-size:15px;line-height:1.7;font-weight:bold;color:#19313d;">{{service_interest}}</p></td></tr></table>
+        <p style="margin:29px 0 11px;font-size:10px;letter-spacing:1.5px;font-weight:bold;color:#628477;">WHAT THEY WANT TO SOLVE OR BUILD</p>
+        <div style="padding:19px 21px;background-color:#f5f0e7;border-left:3px solid #d7bf8d;border-radius:0 7px 7px 0;font-size:14px;line-height:1.95;white-space:pre-wrap;overflow-wrap:anywhere;color:#344d55;">{{message}}</div>
+        <p style="margin:29px 0 13px;font-size:10px;letter-spacing:1.5px;font-weight:bold;color:#628477;">PROJECT &amp; CALLBACK DETAILS</p>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:1px solid #dce2d8;">
+          <tr><td class="field-label" width="145" valign="top" style="padding:12px 14px 12px 0;border-bottom:1px solid #e3e7df;font-size:11px;line-height:1.8;color:#73837c;">Phone / WhatsApp</td><td style="padding:12px 0;border-bottom:1px solid #e3e7df;font-size:12px;line-height:1.8;overflow-wrap:anywhere;">{{phone}}</td></tr>
+          <tr><td class="field-label" width="145" valign="top" style="padding:12px 14px 12px 0;border-bottom:1px solid #e3e7df;font-size:11px;line-height:1.8;color:#73837c;">Website</td><td style="padding:12px 0;border-bottom:1px solid #e3e7df;font-size:12px;line-height:1.8;overflow-wrap:anywhere;">{{website}}</td></tr>
+          <tr><td class="field-label" width="145" valign="top" style="padding:12px 14px 12px 0;border-bottom:1px solid #e3e7df;font-size:11px;line-height:1.8;color:#73837c;">Approximate budget</td><td style="padding:12px 0;border-bottom:1px solid #e3e7df;font-size:12px;line-height:1.8;">{{budget}}</td></tr>
+          <tr><td class="field-label" width="145" valign="top" style="padding:12px 14px 12px 0;border-bottom:1px solid #e3e7df;font-size:11px;line-height:1.8;color:#73837c;">Callback preference</td><td style="padding:12px 0;border-bottom:1px solid #e3e7df;font-size:12px;line-height:1.8;">{{preferred_callback}}<br><span style="color:#73837c;">{{timezone}}</span></td></tr>
+          <tr><td class="field-label" width="145" valign="top" style="padding:12px 14px 12px 0;border-bottom:1px solid #e3e7df;font-size:11px;line-height:1.8;color:#73837c;">Referral source</td><td style="padding:12px 0;border-bottom:1px solid #e3e7df;font-size:12px;line-height:1.8;">{{referral}}</td></tr>
+          <tr><td class="field-label" width="145" valign="top" style="padding:12px 14px 12px 0;border-bottom:1px solid #e3e7df;font-size:11px;line-height:1.8;color:#73837c;">Industry</td><td style="padding:12px 0;border-bottom:1px solid #e3e7df;font-size:12px;line-height:1.8;">{{industry}}</td></tr>
+        </table>
+        <p style="margin:26px 0 11px;font-size:10px;letter-spacing:1.5px;font-weight:bold;color:#628477;">COMPLETE SUBMISSION RECORD</p>
+        <div style="padding:17px 19px;background-color:#f1f4ed;border-radius:7px;font-size:11px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;color:#5e7369;">{{details}}</div>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:27px;"><tr><td style="background-color:#167d74;border-radius:24px;"><a href="mailto:{{from_email}}" style="display:inline-block;padding:14px 24px;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:bold;line-height:1.4;text-decoration:none;color:#ffffff;">Reply to {{from_name}} &rarr;</a></td></tr></table>
+        <p style="margin:20px 0 0;font-size:11px;line-height:1.9;color:#7b8980;">Callback preferences are requests. Confirm a time with the prospect before treating it as a booking. The acknowledgement email is sent separately.</p>
+      </td></tr>
+      <tr><td style="padding:22px 30px;text-align:center;background-color:#e4e9df;border-top:1px solid #d6ded0;border-radius:0 0 14px 14px;font-size:10px;line-height:1.8;color:#697d70;">Maven Bridge: business, finance &amp; management.<br>Knomo Developers: engineering, AI configuration &amp; technical delivery.</td></tr>
+    </table>
+  </td></tr></table>
+</body>
+</html>

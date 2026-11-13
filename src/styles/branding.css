@@ -1,12 +1,12 @@
 /* The supplied logo files are preserved. Layout cropping removes surrounding whitespace. */
-.brand .brand-mark,.brand-mark{display:inline-block;position:relative;flex:0 0 auto;width:42px;height:42px;overflow:hidden;background:#fff;border:1px solid #d8d7cd;border-radius:6px}
+.brand .brand-mark,.brand-mark{display:inline-block;position:relative;flex:0 0 auto;width:42px;height:42px;overflow:hidden;background:transparent;border:0;border-radius:0}
 .brand-mark img{position:absolute;display:block;max-width:none;object-fit:contain}
 .maven-mark img{width:200%;height:200%;left:-50%;top:-41%}
 .knomo-mark img{width:120%;height:120%;left:-10%;top:-10%}
 .brand>span:not(.brand-mark){min-width:0}
 .lockup-business{display:inline-flex;gap:10px;align-items:center;font-family:Manrope,sans-serif;font-weight:600;letter-spacing:.09em;font-size:11px;line-height:1.4}
 .lockup-business small{display:block;font-size:6px;font-weight:400;letter-spacing:.2em;margin-top:3px}
-.lockup-business .brand-mark{width:34px;height:34px;border-radius:4px}
+.lockup-business .brand-mark{width:34px;height:34px;border-radius:0}
 .supplied-lockup{gap:22px}
 .supplied-partner{flex-wrap:wrap;max-width:300px;gap:10px}
 .supplied-partner .brand-mark{width:32px;height:32px}
@@ -23,5 +23,18 @@
 .footer-links>div:last-child{min-width:0}
 .product-label>small{line-height:1.6;max-width:215px}
 .partner-cards h3{padding-right:35px}
+.supplied-lockup .knomo-mark img,.footer .knomo-mark img{filter:invert(1)}
+/* Let the content determine the hero height instead of reserving a full viewport. */
+.hero{height:auto;min-height:0;max-height:none}
+.hero-content{height:auto;min-height:700px;padding-top:142px;padding-bottom:112px;justify-content:center}
+.hero h1{font-size:clamp(52px,5vw,72px)}
+.hero .eyebrow{margin-bottom:20px}
+.hero-content>div:first-child>p{margin:23px 0;max-width:490px;font-size:14px;line-height:1.8}
+.hero-actions{gap:25px}
+.hero-bottom{bottom:24px;padding-top:21px}
+.hero-photo-note{bottom:145px}
+@media(min-width:1600px){.hero-content{min-height:740px;padding-top:145px;padding-bottom:115px}.hero h1{font-size:78px}.hero-content>div:first-child>p{font-size:15px;max-width:520px}}
+@media(max-width:900px){.hero-content{min-height:660px;padding-top:130px;padding-bottom:108px}.hero h1{font-size:56px}.hero-content>div:first-child>p{font-size:13px;max-width:430px}}
+@media(max-width:640px){.hero-content{min-height:0;padding-top:123px;padding-bottom:109px;justify-content:flex-start}.hero h1{font-size:clamp(36px,9.65vw,60px)}.hero .eyebrow{margin-bottom:20px}.hero-content>div:first-child>p{font-size:12.5px;line-height:1.8;max-width:360px;margin:23px 0 20px}.hero-actions{margin-top:20px;gap:14px 20px}.hero-bottom{bottom:21px;padding-top:19px}.hero-actions .button{min-height:48px}.hero-actions .text-link{padding:7px 0}}
 @media(max-width:900px){.brand .brand-mark{width:34px;height:34px}.footer-links{gap:35px}.lockup-business{font-size:10px}}
 @media(max-width:640px){.brand .brand-mark{width:32px;height:32px}.brand{gap:8px}.brand>span:not(.brand-mark){font-size:12px}.supplied-lockup{gap:13px}.lockup-business{font-size:8px;gap:7px}.lockup-business .brand-mark{width:28px;height:28px}.lockup-business small{font-size:5px}.footer-links{gap:28px;flex-wrap:wrap}.partner-cards .mini-label{max-width:80%;font-size:7px}.product-label>small{margin-left:0;max-width:210px;font-size:6px}.partner-icon.supplied-logo{right:20px;top:25px}.direct-contact .business-email{font-size:12px}}
